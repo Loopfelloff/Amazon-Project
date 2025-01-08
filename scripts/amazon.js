@@ -1,3 +1,5 @@
+import {cart as myCarts} from '../data/cart.js';
+import {products} from '../data/products.js';
 let productsHTML = '';
 products.forEach((product , index)=>{
     const html = `
@@ -40,7 +42,7 @@ products.forEach((product , index)=>{
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-added-${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -55,12 +57,13 @@ products.forEach((product , index)=>{
 });
 
 document.querySelector('.js-products-grid').innerHTML  = productsHTML;
+ let Timer = [];     
 
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button , index) =>{
     button.addEventListener('click' , ()=>{
-       const productId = button.dataset.productId;
-       let quantityVal = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+       const {productId} = button.dataset;
+       let quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
        let tempItem;
        cart.forEach((item)=>{
         if(productId === item.productId){
@@ -69,18 +72,22 @@ document.querySelectorAll('.js-add-to-cart')
        });
        if(tempItem)
        {
-        tempItem.quantity +=quantityVal;
+        tempItem.quantity +=quantity;
        }
        else{
         cart.push({
-            productId:productId,
-            quantity : quantityVal
+            productId, // changes made here 
+            quantity // changes made here 
         });
        }
        let cartQuantity =0;
        cart.forEach((item)=>{
         cartQuantity += item.quantity;
        });
+       document.querySelector(`.js-added-${productId}`).style.opacity = 1;
+       let removeMsg = function(){document.querySelector(`.js-added-${productId}`).style.opacity = 0};
+       clearTimeout(Timer[index]);
+        Timer[index] = setTimeout(removeMsg , 5000);
        document.querySelector('.js-cart-quantity').innerText = cartQuantity;
         console.log(cart);
     });
