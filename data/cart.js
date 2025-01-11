@@ -1,4 +1,5 @@
-export const cart = [
+
+export let cart = [
   {
     productId : "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity : 2
@@ -28,3 +29,22 @@ export function addToCart(button){
   }
   console.log(cart);
 }
+
+  export function removeFromCart(buttonarr){
+  buttonarr.forEach((button)=>{
+
+    let newArr = [];
+button.addEventListener('click' , ()=>{
+   const prodcutIdBtn = button.dataset.productId;
+  cart.forEach((cartItem)=>{
+    if(cartItem.productId !==prodcutIdBtn)
+    {
+      newArr.push(cartItem);
+    }
+  });
+  cart= newArr;
+  const toremove = document.querySelector(`.cart-item-container-${prodcutIdBtn}`);
+  toremove.remove();
+});
+  });
+  }

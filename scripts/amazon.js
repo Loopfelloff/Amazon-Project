@@ -2,7 +2,7 @@ import {cart , addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 let productsHTML = '';
-products.forEach((product , index)=>{
+products.forEach((product  , index)=>{
     const html = `
     <div class="product-container">
           <div class="product-image-container">
@@ -48,7 +48,7 @@ products.forEach((product , index)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id = "${product.id}" >
+          <button class="add-to-cart-button button-primary js-add-to-cart" dataset-product-id = "${product.id}" >
             Add to Cart
           </button>
         </div>
