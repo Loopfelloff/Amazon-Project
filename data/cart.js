@@ -62,3 +62,19 @@ button.addEventListener('click' , ()=>{
   });
  
   }
+  export function updateDeliveryOption(productId , deliveryOptionId)
+  {
+    let tempItem;
+  cart.forEach((item)=>{
+   if(productId === item.productId){
+       tempItem = item;
+   }
+  });
+  
+  if (tempItem) {
+    tempItem.deliveryOptionId = deliveryOptionId; // Update the delivery option for the matching item
+    saveToStorage();
+  } else {
+    console.error(`Item with productId ${productId} not found in the cart.`);
+  }
+  }
