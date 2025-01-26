@@ -7,10 +7,9 @@ import {deliveryOptions} from '../data/deliveryOptions.js';
 const today = dayjs();
 const deliveryDate = today.add(7 , 'day')
 deliveryDate.format('dddd , MMMM D');
-let cartSummaryHTML = '';
-export function displayItems()
-{
-console.log(cart);
+
+function renderOrderSummary(){
+  let cartSummaryHTML = '';
 cart.forEach((cartItem)=>{
   const {productId} = cartItem;
   const {quantity} = cartItem;
@@ -115,8 +114,8 @@ html +=
 return html;
 }
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
-}
-displayItems();
+
+
 let buttonarr = document.querySelectorAll('.js-delete-btn');
 removeFromCart(buttonarr);
 document.querySelectorAll('.js-delivery-option')
@@ -128,6 +127,8 @@ element.addEventListener('click' , ()=>{
 
   const { deliveryOptionId , productId} = element.dataset;
   updateDeliveryOption(productId , deliveryOptionId);
-  
+  renderOrderSummary();
 });
 });
+}
+renderOrderSummary();
