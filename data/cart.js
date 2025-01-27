@@ -1,4 +1,4 @@
-
+import { renderPaymentSummary } from "../scripts/checkout/paymentSummary.js";
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if(!cart){
@@ -57,6 +57,7 @@ button.addEventListener('click' , ()=>{
   cart= newArr;
   const toremove = document.querySelector(`.cart-item-container-${prodcutIdBtn}`);
   toremove.remove();
+  renderPaymentSummary();
   saveToStorage();
 });
   });
@@ -78,3 +79,4 @@ button.addEventListener('click' , ()=>{
     console.error(`Item with productId ${productId} not found in the cart.`);
   }
   }
+  
