@@ -1,8 +1,13 @@
 import {cart , addToCart} from '../data/cart.js';
-import {products} from '../data/products.js';
+import {products , loadProducts} from '../data/products.js';
 import  formatCurrency from './utils/money.js';
-let productsHTML = '';
-let testid;
+
+loadProducts(renderProductsGrid);
+
+function renderProductsGrid()
+{
+
+  let productsHTML = '';
 products.forEach((product  , index)=>{
     const html = `
     <div class="product-container">
@@ -59,6 +64,7 @@ products.forEach((product  , index)=>{
 });
 
 
+
 document.querySelector('.js-products-grid').innerHTML  = productsHTML;
 let Timer = [];     
 function updateCart(productId  , index)
@@ -74,6 +80,7 @@ function updateCart(productId  , index)
        document.querySelector('.js-cart-quantity').innerText = cartQuantity;
         console.log(cart);
 }
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button , index) =>{
 
@@ -85,3 +92,5 @@ document.querySelectorAll('.js-add-to-cart')
        updateCart(productId , index);
     });
   });
+
+}
