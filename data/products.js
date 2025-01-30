@@ -57,7 +57,6 @@ const xhr = new XMLHttpRequest();
 xhr.open('GET' , 'https://supersimplebackend.dev/products' , true);
 xhr.send();
 xhr.addEventListener('load' , ()=>{
-  console.log(xhr.response);
 products = JSON.parse(xhr.response).map((productDetails)=>{
   if(productDetails.type === 'clothing')
   {
@@ -65,6 +64,7 @@ products = JSON.parse(xhr.response).map((productDetails)=>{
   }
 return new Product(productDetails);
 });
+console.log('product load');
 fun();
 });
 

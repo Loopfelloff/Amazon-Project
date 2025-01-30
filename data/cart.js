@@ -82,4 +82,13 @@ button.addEventListener('click' , ()=>{
     console.error(`Item with productId ${productId} not found in the cart.`);
   }
   }
+  export function loadCart(fun){
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET' , 'https://supersimplebackend.dev/cart' , true);
+  xhr.send();
+  xhr.addEventListener('load' , ()=>{
+    console.log(xhr.response);
+  fun();
+  });
   
+  }
