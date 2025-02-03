@@ -5,6 +5,7 @@ import { loadCart } from "../data/cart.js";
 
 
 async function loadPage(){; 
+    try{
     let [firstAwait , secondAwait] = await Promise.all([
         loadProductsFetch(),
         new Promise((resolve)=>{
@@ -13,6 +14,10 @@ async function loadPage(){;
     ]);
     console.log(firstAwait);
     console.log(secondAwait);
+}
+catch(error){
+console.log(error);
+}
    renderOrderSummary();
     renderPaymentSummary();
    return 'nextstep';

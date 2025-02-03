@@ -78,7 +78,9 @@ export function loadProductsFetch(){
 loadProductsFetch().then(()=>{
 console.log('next step');
 });
-
+loadProductsFetch().catch((error)=>{
+console.log(error);
+});
 export function loadProducts(fun){
 const xhr = new XMLHttpRequest();
 
