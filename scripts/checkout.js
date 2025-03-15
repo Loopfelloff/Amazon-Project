@@ -37,3 +37,5 @@ console.log(error);
 //     renderOrderSummary();
 //     renderPaymentSummary();
 // });
+//this is the end of the file right here.
+//this one marks another end of the file right here.

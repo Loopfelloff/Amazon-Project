@@ -95,3 +95,6 @@ document.querySelectorAll('.js-add-to-cart')
 
 }
 // something in the way she moves tudududu attractsm e liek tno other
+// This marks the end of the file.
+// aloo gobi matar paneer.
+
